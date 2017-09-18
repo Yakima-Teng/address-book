@@ -1,6 +1,29 @@
 # AddressBook
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
+This is an AngularJS address book demo which was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2. This project is created as an answer to an question. And here are the details:
+
+![](./materials/excel.png)
+
+It’s highly preferable to use Angular/AngularJS with as less of other frameworks/libraries as possible. Yet, in case you have no Angular/ AngularJS experience, you can use other frameworks too.
+
+## Requirements:
+
+1. Cell phone column can be edited when double clicked.
+2. Clicking the column label would sort the column alphabetically.
+3. When the selector of the first column and the first row is checked, all rows are selected.
+4. Clicking the Delete button will delete the selected rows.
+5. Update will cause the Ajax invocation to update the modified rows. For now, just pop up a alert showing the rows you are to update.
+6. Add will add an empty row to fill in the data except the ID, which will be filled after updating.
+7. Think of how to localize this.
+
+## Also, please answer the following questions for the project:
+
+### Explain how to structure an UI project in MVC model with a simple example.
+
+
+### Explain how AngularJS directive is used, and give a couple of use cases.
+
+### Explain how AngularJS scope is defined, and give a couple of use cases.
 
 ## Development server
 
