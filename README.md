@@ -23,7 +23,9 @@ It’s highly preferable to use Angular/AngularJS with as less of other framewor
 
 ### Explain how AngularJS directive is used, and give a couple of use cases.
 
+
 ### Explain how AngularJS scope is defined, and give a couple of use cases.
+
 
 ## Development server
 
