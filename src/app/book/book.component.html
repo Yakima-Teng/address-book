@@ -1,0 +1,148 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h1 class="header">
+  <span class="title">{{title}}</span>
+  <!--<a routerLink="/note" class="btn btn-see-note">See Notes</a>-->
+  <span (click)="toSeeNotes()" class="btn btn-see-note">See Notes</span>
+</h1>
+<table class="table">
+  <tr class="row row-header">
+    <td
+      (click)="toggleAllFields()"
+      rowspan="2" class="item">{{isAllFieldsSelected() ? '[v]' : '[ ]'}}</td>
+    <td
+      (click)="sortColumn('id')"
+      rowspan="2" class="item">ID</td>
+    <td
+      (click)="sortColumn('name')"
+      rowspan="2" class="item">Name</td>
+    <td
+      (click)="sortColumn('location')"
+      rowspan="2" class="item">Location</td>
+    <td
+      (click)="sortColumn('office')"
+      rowspan="2" class="item">Office</td>
+    <td colspan="2" class="item">Phone</td>
+  </tr>
+  <tr class="row row-header">
+    <td
+      (click)="sortColumn('phoneOffice')"
+      class="item">Office</td>
+    <td
+      (click)="sortColumn('phoneCell')"
+      class="item">Cell</td>
+  </tr>
+  <tr
+    *ngFor="let item of addresses"
+    [class.selected]="isAllRowFieldsSelected(item.fields)"
+    class="row row-body">
+    <td
+      (click)="toggleRow(item.fields)"
+      [class.selected]="isAllRowFieldsSelected(item.fields)"
+      class="item">[]</td>
+    <td
+      (click)="toggleFieldSelectStatus(item.fields.id)"
+      [class.selected]="item.fields.id.selected"
+      class="item">{{item.fields.id.value}}</td>
+    <td
+      (click)="toggleFieldSelectStatus(item.fields.name)"
+      [class.selected]="item.fields.name.selected"
+      class="item">
+      <input
+        *ngIf="item.status !== 'toUpdate'"
+        [(ngModel)]="item.fields.name.value"
+        type="text"
+        readonly="readonly"
+        placeholder="name">
+      <input
+        *ngIf="item.status === 'toUpdate'"
+        [(ngModel)]="item.fields.name.value"
+        type="text"
+        placeholder="name">
+    </td>
+    <td
+      (click)="toggleFieldSelectStatus(item.fields.location)"
+      [class.selected]="item.fields.location.selected"
+      class="item">
+      <input
+        *ngIf="item.status !== 'toUpdate'"
+        [(ngModel)]="item.fields.location.value"
+        type="text"
+        readonly="readonly"
+        placeholder="location">
+      <input
+        *ngIf="item.status === 'toUpdate'"
+        [(ngModel)]="item.fields.location.value"
+        type="text"
+        placeholder="location">
+    </td>
+    <td
+      (click)="toggleFieldSelectStatus(item.fields.office)"
+      [class.selected]="item.fields.office.selected"
+      class="item">
+      <input
+        *ngIf="item.status !== 'toUpdate'"
+        [(ngModel)]="item.fields.office.value"
+        type="text"
+        readonly="readonly"
+        placeholder="office">
+      <input
+        *ngIf="item.status === 'toUpdate'"
+        [(ngModel)]="item.fields.office.value"
+        type="text"
+        placeholder="office">
+    </td>
+    <td
+      (click)="toggleFieldSelectStatus(item.fields.phoneOffice)"
+      [class.selected]="item.fields.phoneOffice.selected"
+      class="item">
+      <input
+        *ngIf="item.status !== 'toUpdate'"
+        [(ngModel)]="item.fields.phoneOffice.value"
+        type="text"
+        readonly="readonly"
+        placeholder="office phone">
+      <input
+        *ngIf="item.status === 'toUpdate'"
+        [(ngModel)]="item.fields.phoneOffice.value"
+        type="text"
+        placeholder="office phone">
+    </td>
+    <td
+      (click)="toggleFieldSelectStatus(item.fields.phoneCell)"
+      [class.selected]="item.fields.phoneCell.selected"
+      class="item">
+      <input
+        type="text"
+        readonly="readonly"
+        appToggleDisable
+        [(ngModel)]="item.fields.phoneCell.value"
+        placeholder="cell phone">
+    </td>
+  </tr>
+  <tr
+    *ngFor="let item of addressPlaceholders"
+    class="row row-body">
+    <td class="item">[]</td>
+    <td class="item"></td>
+    <td class="item"></td>
+    <td class="item"></td>
+    <td class="item"></td>
+    <td class="item"></td>
+    <td class="item"></td>
+  </tr>
+  <tr class="row row-footer">
+    <td class="item"></td>
+    <td
+      (click)="toDeleteItems()"
+      class="item btn btn-delete">Delete</td>
+    <td class="item"></td>
+    <td class="item"></td>
+    <td class="item"></td>
+    <td
+      (click)="toUpdateItems()"
+      class="item btn btn-update">Update</td>
+    <td
+      (click)="toAddItems()"
+      class="item btn btn-add">Add</td>
+  </tr>
+</table>

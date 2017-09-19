@@ -1,36 +1,6 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<h1 class="title">{{title}}</h1>
-<table class="table">
-  <tr class="row row-header">
-    <td rowspan="2" class="item">[]</td>
-    <td rowspan="2" class="item">ID</td>
-    <td rowspan="2" class="item">Name</td>
-    <td rowspan="2" class="item">Location</td>
-    <td rowspan="2" class="item">Office</td>
-    <td colspan="2" class="item">Phone</td>
-  </tr>
-  <tr class="row row-header">
-    <td class="item">Office</td>
-    <td class="item">Cell</td>
-  </tr>
-  <tr *ngFor="let item of addresses" class="row row-body">
-    <td class="item">[]</td>
-    <td class="item">{{item.id}}</td>
-    <td class="item">{{item.name}}</td>
-    <td class="item">{{item.location}}</td>
-    <td class="item">{{item.office}}</td>
-    <td class="item">{{item.phoneOffice}}</td>
-    <td class="item">{{item.phoneCell}}</td>
-  </tr>
-  <tr class="row row-footer">
-    <td class="item"></td>
-    <td class="item btn btn-delete">Delete</td>
-    <td class="item"></td>
-    <td class="item"></td>
-    <td class="item"></td>
-    <td class="item btn btn-update">Update</td>
-    <td class="item btn btn-add">Add</td>
-  </tr>
-</table>
-
-
+<!--<h1 class="title">Welcome</h1>-->
+<!--<nav class="nav">-->
+  <!--<a routerLink="/book" class="link">Address Book</a>-->
+  <!--<a routerLink="/note" class="link">Note</a>-->
+<!--</nav>-->
+<router-outlet></router-outlet>
