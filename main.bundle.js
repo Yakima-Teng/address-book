@@ -271,7 +271,7 @@ var BookComponent = (function () {
         window.alert("Addresses to be updated will have ID values: " + ids.join(',') + ".");
     };
     BookComponent.prototype.validateRowData = function (row) {
-        var fields = Object.keys(row.fields);
+        var fields = Object.keys(row.fields).filter(function (fieldName) { return fieldName !== 'id'; });
         for (var i = 0, len = fields.length; i < len; i++) {
             var val = row.fields[fields[i]].value;
             if (val === null || val === undefined || val === null || val === '') {
