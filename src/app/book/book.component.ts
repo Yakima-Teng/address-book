@@ -48,16 +48,33 @@ export class BookComponent implements OnInit, OnDestroy {
       return;
     }
     const ids = [];
-    rowsToUpdate.forEach(row => {
+    for (let i = 0, len = rowsToUpdate.length; i < len; i++) {
+      const row = rowsToUpdate[i];
+      if (!this.validateRowData(row)) {
+        window.alert('No empty field value is allowed.');
+        return;
+      }
       while (this.addresses.filter(addr => addr.fields.id.value === this.id).length > 0) {
         this.id = '' + (parseInt(this.id, 10) + 1);
       }
       ids.push(this.id);
       row.fields.id.value = this.id;
       row.status = 'readable';
-    });
+    }
     window.alert(`Addresses to be updated will have ID values: ${ids.join(',')}.`);
   }
+
+  validateRowData(row: Row): boolean {
+    const fields = Object.keys(row.fields)
+    for (let i = 0, len = fields.length; i < len; i++) {
+      const val = row.fields[fields[i]].value;
+      if (val === null || val === undefined || val === null || val === '') {
+        return false;
+      }
+    }
+    return true;
+  }
+
   toAddItems(): void {
     this.addresses.push({
       status: 'toUpdate',
@@ -96,9 +113,9 @@ export class BookComponent implements OnInit, OnDestroy {
     });
   }
 
-  logVal(val: String): void {
-    window.console.log(val);
-  }
+  // logVal(val: String): void {
+  //   window.console.log(val);
+  // }
 
   isAllRowFieldsSelected (fields: Object): boolean {
     return Object.keys(fields).filter(field => !fields[field].selected).length === 0;
