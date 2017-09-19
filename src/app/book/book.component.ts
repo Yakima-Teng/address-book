@@ -65,7 +65,7 @@ export class BookComponent implements OnInit, OnDestroy {
   }
 
   validateRowData(row: Row): boolean {
-    const fields = Object.keys(row.fields)
+    const fields = Object.keys(row.fields).filter(fieldName => fieldName !== 'id');
     for (let i = 0, len = fields.length; i < len; i++) {
       const val = row.fields[fields[i]].value;
       if (val === null || val === undefined || val === null || val === '') {
