@@ -8,28 +8,28 @@
   <tr class="row row-header">
     <td
       (click)="toggleAllFields()"
-      rowspan="2" class="item">{{isAllFieldsSelected() ? '[v]' : '[ ]'}}</td>
+      rowspan="2" class="item clickable">{{isAllFieldsSelected() ? '[v]' : '[ ]'}}</td>
     <td
       (click)="sortColumn('id')"
-      rowspan="2" class="item">ID</td>
+      rowspan="2" class="item clickable">ID</td>
     <td
       (click)="sortColumn('name')"
-      rowspan="2" class="item">Name</td>
+      rowspan="2" class="item clickable">Name</td>
     <td
       (click)="sortColumn('location')"
-      rowspan="2" class="item">Location</td>
+      rowspan="2" class="item clickable">Location</td>
     <td
       (click)="sortColumn('office')"
-      rowspan="2" class="item">Office</td>
+      rowspan="2" class="item clickable">Office</td>
     <td colspan="2" class="item">Phone</td>
   </tr>
   <tr class="row row-header">
     <td
       (click)="sortColumn('phoneOffice')"
-      class="item">Office</td>
+      class="item clickable">Office</td>
     <td
       (click)="sortColumn('phoneCell')"
-      class="item">Cell</td>
+      class="item clickable">Cell</td>
   </tr>
   <tr
     *ngFor="let item of addresses"
@@ -38,11 +38,13 @@
     <td
       (click)="toggleRow(item.fields)"
       [class.selected]="isAllRowFieldsSelected(item.fields)"
-      class="item">[]</td>
+      class="item">{{isAllRowFieldsSelected(item.fields) ? '[v]' : '[ ]'}}</td>
     <td
       (click)="toggleFieldSelectStatus(item.fields.id)"
       [class.selected]="item.fields.id.selected"
-      class="item">{{item.fields.id.value}}</td>
+      class="item">
+      <span class="field-id">{{item.fields.id.value}}</span>
+    </td>
     <td
       (click)="toggleFieldSelectStatus(item.fields.name)"
       [class.selected]="item.fields.name.selected"
@@ -51,12 +53,14 @@
         *ngIf="item.status !== 'toUpdate'"
         [(ngModel)]="item.fields.name.value"
         type="text"
+        class="field-text"
         readonly="readonly"
         placeholder="name">
       <input
         *ngIf="item.status === 'toUpdate'"
         [(ngModel)]="item.fields.name.value"
         type="text"
+        class="field-text"
         placeholder="name">
     </td>
     <td
@@ -67,12 +71,14 @@
         *ngIf="item.status !== 'toUpdate'"
         [(ngModel)]="item.fields.location.value"
         type="text"
+        class="field-text"
         readonly="readonly"
         placeholder="location">
       <input
         *ngIf="item.status === 'toUpdate'"
         [(ngModel)]="item.fields.location.value"
         type="text"
+        class="field-text"
         placeholder="location">
     </td>
     <td
@@ -83,12 +89,14 @@
         *ngIf="item.status !== 'toUpdate'"
         [(ngModel)]="item.fields.office.value"
         type="text"
+        class="field-text"
         readonly="readonly"
         placeholder="office">
       <input
         *ngIf="item.status === 'toUpdate'"
         [(ngModel)]="item.fields.office.value"
         type="text"
+        class="field-text"
         placeholder="office">
     </td>
     <td
@@ -99,12 +107,14 @@
         *ngIf="item.status !== 'toUpdate'"
         [(ngModel)]="item.fields.phoneOffice.value"
         type="text"
+        class="field-text"
         readonly="readonly"
         placeholder="office phone">
       <input
         *ngIf="item.status === 'toUpdate'"
         [(ngModel)]="item.fields.phoneOffice.value"
         type="text"
+        class="field-text"
         placeholder="office phone">
     </td>
     <td
@@ -113,6 +123,7 @@
       class="item">
       <input
         type="text"
+        class="field-text"
         readonly="readonly"
         appToggleDisable
         [(ngModel)]="item.fields.phoneCell.value"
